@@ -1,21 +1,37 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 
+
+/** SimpleForm
+ * 
+ * state: file
+ * 
+ * simple form to upload file 
+ */
 function SimpleForm() {
   const [file, setFile] = useState(null)
+
   console.log("SimpleFile mounted")
 
-  function handleSubmit(evt){
-    console.log("event file ==>", evt.target.file[0])
-    setFile(evt.target.file[0])
+  function handleSubmit(evt) {
+    evt.preventDefault()
+    console.log("event file ==>", file)
   }
-  
+
+  function handleChange(evt) {
+    setFile(evt.target.files[0])
+  }
+
   return (
-    <form>
-      <input name="file" type="file" />
-      <button type="submit" onSubmit={handleSubmit}>SUBMIT</button>
+    <form onSubmit={handleSubmit} >
+      <input onChange={handleChange} name="file" type="file" />
+      <button type="submit">SUBMIT</button>
     </form>
-    )
+  )
 
 }
+
+
+// very important attr we will need on form // look for req.files 
+
 
 export default SimpleForm;
