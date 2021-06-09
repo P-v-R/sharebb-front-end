@@ -1,4 +1,5 @@
 import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -14,11 +15,11 @@ class ShareBnBApi {
   // the token for interactive with the API will be stored here.
   static token;
 
-  static async request(endpoint, data = {}, method = "get") {
+  static async request(endpoint, data = {}, method = "get", headers = {}) {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { };
+    // const headers = { };
     const params = (method === "get")
       ? data
       : {};
@@ -34,8 +35,16 @@ class ShareBnBApi {
 
   
  // Individual API routes  
- static async postImage(file) {
-      let res = await this.request(`image`, { file }, 'post');
+ static async uploadImage(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("listingKey", uuid());
+      console.log("uploading file ===>", formData.file)
+      console.log("uploading uuid key ===>", formData.listingKey)
+      let res = await this.request(`image`, formData , 'post', { headers: {
+        "Content-Type": "multipart/formdata"
+      }});
+      console.log(res);
       return res;
     }
 }

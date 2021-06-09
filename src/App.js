@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <img src="https://sharebnb-mo.s3-us-east-2.amazonaws.com/5.jpg"/>
       <SimpleForm/ >
     </div>
   );
