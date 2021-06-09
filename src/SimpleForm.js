@@ -28,7 +28,7 @@ function SimpleForm() {
   }
 
   function handleChange(evt) {
-    setFile(evt.target.files[0])
+    setFile(evt.target.files)
   }
 
   return (
