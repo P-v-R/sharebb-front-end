@@ -1,4 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import ShareBnBApi from "./api.js"
+
+
+
+
 
 
 /** SimpleForm
@@ -11,10 +16,15 @@ function SimpleForm() {
   const [file, setFile] = useState(null)
 
   console.log("SimpleFile mounted")
+  async function submitFile(){
+    let resp = await ShareBnBApi.uploadImage(file)
+    // console.log("resp =====>", resp)
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault()
-    console.log("event file ==>", file)
+    // console.log("event file ==>", file)
+    submitFile();
   }
 
   function handleChange(evt) {
@@ -22,7 +32,7 @@ function SimpleForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit} encType="multipart/form-data" >
       <input onChange={handleChange} name="file" type="file" />
       <button type="submit">SUBMIT</button>
     </form>

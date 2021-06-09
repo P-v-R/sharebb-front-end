@@ -13,7 +13,7 @@ class ShareBnBApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+    const headers = {  };
     const params = (method === "get")
       ? data
       : {};
@@ -21,9 +21,17 @@ class ShareBnBApi {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
-      throw Array.isArray(message) ? message : [message];
+      // let message = err.response.data.error.message;
+      // throw Array.isArray(message) ? message : [message];
     }
   }
+  
+  // Individual API routes  
+  static async uploadImage(file) {
+    console.log("file in api =====>", file)
+    let res = await this.request(`image`, {file}, 'post');
+    return res;
   }
+
+}
 export default ShareBnBApi;
