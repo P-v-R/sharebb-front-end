@@ -41,7 +41,7 @@ function FormListingInfo({ listingFormData, goForward }) {
         <Form.Control
           id="FormListingInfo-pricePerHour"
           name="pricePerHour"
-          type="text"
+          type="integer"
           onChange={handleChange}
           value={currFormData.pricePerHour}
           required
@@ -50,7 +50,7 @@ function FormListingInfo({ listingFormData, goForward }) {
         <Form.Control
           id="FormListingInfo-minHours"
           name="minHours"
-          type="text"
+          type="integer"
           onChange={handleChange}
           value={currFormData.minHours}
           required

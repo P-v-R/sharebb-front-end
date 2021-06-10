@@ -91,16 +91,23 @@ function ListingAddForm({ currUser }) {
   async function submit(photo) {
     try {
       listingFormData.ownerId = currUser.id;
+      listingFormData.minHours = +listingFormData.minHours;
+      listingFormData.pricePerHour = +listingFormData.pricePerHour;
+      listingFormData.country = "USA";
       let listingRes = await ShareBnBApi.addListing(listingFormData);
-      console.log(listingRes.id);
+      console.log("listing added");
       let listingId = listingRes.id
       if (photo) {
         let photoRes = await ShareBnBApi.uploadImage(photo, listingId);
-        let listingPatch = await ShareBnBApi.patchListing();
+        console.log("image uploaded");
+        let listingPatch = await ShareBnBApi.patchListing(listingId);
+        console.log("image added to db");
       }
       if (tagsFormData) {
-        for (let tag of tags) {
+        for (let tag of tagsFormData) {
+          console.log("adding tag", listingId, tag)
           let tagsRes = await ShareBnBApi.addTagToListing(listingId, tag);
+          console.log("tag added to db");
         }
       }
     } catch (err) {

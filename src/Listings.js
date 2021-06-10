@@ -2,6 +2,8 @@ import SearchBar from "./SearchBar";
 import ListingCard from "./ListingCard";
 import { useEffect, useState } from "react";
 import ShareBnBApi from "./api";
+import MapSearch from "./MapSearch";
+import "./Listings.css";
 
 function Listings() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,12 +40,23 @@ function Listings() {
 
   if (!isLoading) {
   return (
-    <>
-    <SearchBar search={search} initialSearchTerm={filter}/>
-    <div>listings
-      {listings.map(listing => <ListingCard listing={listing} />)}
+    <div className="row">
+    <div className="col-8">
+      <SearchBar search={search} initialSearchTerm={filter}/>
+    
+    <div className="Listings-container d-flex flex-wrap justify-content-around">
+      <ul className="Listings-ul">
+
+        {listings.map(listing => <li key={listing.id}><ListingCard key={listing.id} listing={listing} /></li>)}
+      </ul>
+      
     </div>
-    </>
+    </div>
+    <div className="col-4" style={{border: "1px solid black"}}>
+      insert map here :(
+    <MapSearch />
+    </div>
+    </div>
   )
 
   }

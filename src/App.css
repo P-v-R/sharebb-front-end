@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+
 .App {
   text-align: center;
 }
+
+.Logo {
+  font-family: 'Fredoka One', cursive;
+}
+
 
 .App-logo {
   height: 40vmin;

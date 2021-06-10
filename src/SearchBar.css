@@ -1,0 +1,23 @@
+.SearchBar {
+    margin: 2% auto;
+}
+
+.SearchBar-button {
+ background-color: blue;
+ height: 50px;
+ width: 10%;
+ min-width: 100px;
+ border-radius: 0 25px 25px  0;
+ border: 3px solid blue;
+ text-align: left;
+ color: white;
+}
+
+
+.SearchBar-input {
+    padding-left: 20px;
+    height: 50px;
+    width: 60%;
+    border-radius:  25px 0 0  25px;
+    border: 2px solid blue;
+}

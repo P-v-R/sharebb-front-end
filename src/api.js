@@ -97,6 +97,7 @@ class ShareBnBApi {
      * returns: { listing_id, tag_handle }
   */
      static async addTagToListing(listingId, tagHandle) {
+       console.log("addingTags", listingId, tagHandle)
       let res = await this.request(`listings/tags`, {listingId, tagHandle}, 'post');
       return res;
     }
@@ -127,23 +128,12 @@ class ShareBnBApi {
       }
 
 
-      /** Add tags for listing TODO
-  */
-       static async getTags(searchTerm="") {
-        if (searchTerm === "") {
-          let res = await this.request(`tags`);
-          return res.tags;
-        }
-    
-        let res = await this.request(`tags?q=${searchTerm}`);
-        return res.tags;
-      }
-
 
 
 /*----------MESSAGES------------------------------------------------- */
-      static async sendMessage(message, listingId, fromUserId, toUserId) {
-        let res = await this.request('messages', {message, listingId, fromUserId, toUserId}, 'post');
+      static async sendMessage(msgData) {
+        console.log("message api")
+        let res = await this.request('messages', msgData, 'post');
         return res.message;
       }
 }

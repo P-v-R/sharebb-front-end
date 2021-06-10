@@ -10,7 +10,6 @@ function ListingPage({currUser}) {
   const [errors, setErrors] = useState(null);
   const [showMessage, setShowMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [msgSuccess, setMsgSuccess] = useState(null);
 
   useEffect(function fetchListing() {
     async function fetchListingById() {
@@ -27,18 +26,6 @@ function ListingPage({currUser}) {
     }
     fetchListingById();
   },[])
-
-  async function submit(message) {
-    try {
-      console.log(message, listingId, currUser.id, owner.id)
-     let msg = await ShareBnBApi.sendMessage(message, listingId, currUser.id, owner.id)
-      setMsgSuccess('Message Sent!')
-      console.log(msg);
-    } catch (err) {
-      setErrors(err);
-    }
-    
-  }
 
   if (isLoading) {
     return (
@@ -60,7 +47,7 @@ function ListingPage({currUser}) {
       {!showMessage && <button onClick={() => setShowMessage(true)}>Ask about this listing</button>}
       {showMessage && (
         <div>
-          <MessageOwnerForm owner={owner} submit={submit} listing={listing} currUser={currUser} msgSuccess={msgSuccess}/>
+          <MessageOwnerForm owner={owner} listing={listing} currUser={currUser}/>
         </div>
       )}
     </div>

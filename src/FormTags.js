@@ -12,7 +12,7 @@ console.log("tag form data ===>", currFormData);
     setCurrFormData(currData => [...currData, evt.target.value]);
     
   }
-
+  //TODO toggle button based, currently have duplicate issue
   function handleForward(evt) {
     evt.preventDefault();
     const { name, value } = evt.target;
