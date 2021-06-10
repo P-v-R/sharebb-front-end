@@ -1,12 +1,15 @@
-import SimpleForm from "./SimpleForm"
-
+import NavigationBar from "./NavigationBar";
+import Routes from "./Routes";
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <img src="https://sharebnb-mo.s3-us-east-2.amazonaws.com/5.jpg"/>
-      <SimpleForm/ >
+      <BrowserRouter>
+      <NavigationBar />
+      <Routes />
+      </BrowserRouter>
     </div>
   );
 }

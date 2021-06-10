@@ -8,7 +8,7 @@ import ShareBnBApi from "./api.js";
  * 
  * simple form to upload file 
  */
-function SimpleForm() {
+function UploadPhotoForm() {
   const [file, setFile] = useState(null)
   console.log("SimpleFile mounted")
   async function submitFile(){
@@ -31,4 +31,4 @@ function SimpleForm() {
   )
 }
 // very important attr we will need on form // look for req.files 
-export default SimpleForm;
+export default UploadPhotoForm;

@@ -47,5 +47,20 @@ class ShareBnBApi {
       console.log(res);
       return res;
     }
+
+   /** Get all listings.  "searchTerm" => [listings]
+   * 
+   * returns [ { listing }, ...]
+  */
+
+    static async getListings(searchTerm) {
+      if (searchTerm === "") {
+        let res = await this.request(`listings`);
+        return res.listings;
+      }
+  
+      let res = await this.request(`listings?q=${searchTerm}`);
+      return res.listings;
+    }
 }
 export default ShareBnBApi;
