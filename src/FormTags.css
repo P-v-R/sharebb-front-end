@@ -1,0 +1,18 @@
+.FormTag-Buttons {
+    border: 3px solid #0D3B66;
+    margin: 3px;
+    align-self: center;
+    border-radius: 25px;
+}
+
+.FormTag-Buttons:hover {
+    border: 3px solid #0D3B66;
+    background-color: #0d3b6644 !important;
+    margin: 3px;
+    align-self: center;
+    border-radius: 25px;
+}
+
+.clicked {
+    background-color: #0D3B66 !important;
+}

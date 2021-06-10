@@ -3,12 +3,13 @@
 }
 
 .SearchBar-button {
- background-color: blue;
+ background-color: #F95738;
  height: 50px;
  width: 10%;
  min-width: 100px;
+ margin-bottom: 3px;
  border-radius: 0 25px 25px  0;
- border: 3px solid blue;
+ border: 3px solid #F95738;
  text-align: left;
  color: white;
 }
@@ -19,5 +20,5 @@
     height: 50px;
     width: 60%;
     border-radius:  25px 0 0  25px;
-    border: 2px solid blue;
+    border: 2px solid #F95738;
 }

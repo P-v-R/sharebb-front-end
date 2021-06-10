@@ -1,3 +1,14 @@
 .navbar-brand {
     font-family: 'Fredoka One', cursive;
+    font-size: 2.5em;
+    color: #F4D35E !important;
+    margin-left: 10px;
+    -webkit-text-stroke-width: 3px;
+    letter-spacing: 2px;
+    -webkit-text-stroke-color: #0D3B66;
+    padding: 0;
+}
+
+.Navigation-Bar {
+    background-color: #F4D35E;
 }

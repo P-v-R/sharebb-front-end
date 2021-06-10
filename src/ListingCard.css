@@ -3,6 +3,8 @@
    height: 250px;
    width: 50vw;
    margin: 10px;
+   margin-left: 0;
+   margin-right: 0;
    overflow: hidden;
    border-radius: 15px;
 }

@@ -5,11 +5,12 @@ import FormListingInfo from "./FormListingInfo";
 import FormAddress from "./FormAddress";
 import FormTags from "./FormTags";
 import ShareBnBApi from "./api";
+import "./ListingAddForm.css";
 
 
 function ListingAddForm({ currUser }) {
   const [listingFormData, setListingFormData] = useState("");
-  const [tagsFormData, setTagsFormData] = useState("");
+  const [tagsFormData, setTagsFormData] = useState([]);
   const [photoFormData, setPhotoFormData] = useState(null);
   const [formPage, setFormPage] = useState(1)
   const [errors, setErrors] = useState(null);
@@ -118,10 +119,11 @@ function ListingAddForm({ currUser }) {
 
   return (
     <div className="ListingAddForm">
+      <h1>Add a New Sharebnb</h1>
       <div className="row">
         <div className="col-1 col-sm-2 col-lg-4"></div>
         <div className="col-10 col-sm-8 col-lg-4">
-          <div ClassName="Forms">
+          <div className="AddForm">
             {(formPage === 1) && <FormListingInfo listingFormData={listingFormData} goForward={goForwardSaveListing} />}
             {(formPage === 2) && <FormAddress listingFormData={listingFormData} goForward={goForwardSaveListing} goBack={goBackSaveListing}/>}
             {(formPage === 3) && <FormTags tags={tags} tagsFormData={tagsFormData} goForward={goForwardSaveTags} goBack={goBackSaveTags} />}

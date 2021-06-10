@@ -56,8 +56,13 @@ function FormListingInfo({ listingFormData, goForward }) {
           required
         />
 
-            <div ClassName="row">
-              <button onClick={handleForward}>Go Forward</button>
+            <div ClassName="row button-row">
+              <div className="col-6">
+              </div>
+              <div className="col-6">
+                <button onClick={handleForward}>→</button>
+              </div>
+              
             </div>
         </Form>
     </>

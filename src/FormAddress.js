@@ -22,7 +22,6 @@ function FormAddress({ listingFormData, goForward, goBack }) {
   }
   return(
     <Form>
-      <p>Address:</p>
          <Form.Label htmlFor="ListingAddForm-address">Street Address</Form.Label>
         <Form.Control
           id="ListingAddForm-address"
@@ -65,9 +64,13 @@ function FormAddress({ listingFormData, goForward, goBack }) {
           onChange={handleChange}
           value={currFormData.state}
         />
-         <div ClassName="row">
-              <button onClick={handleBack}>Go Back</button>
-              <button onClick={handleForward}>Go Forward</button>
+         <div className="row">
+           <div className="col-6">
+              <button onClick={handleBack}>←</button>
+              </div>
+              <div className="col-6">
+              <button onClick={handleForward}>→</button>
+              </div>
             </div>
     </Form>
   )

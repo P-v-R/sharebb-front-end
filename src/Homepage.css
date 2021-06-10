@@ -1,7 +1,36 @@
 .Logo {
     font-family: 'Fredoka One', cursive;
+    font-size: 2.5em;
+    color: #0D3B66 !important;
+    margin-left: 10px;
+    letter-spacing: 2px;
+    padding: 0;
 }
 
 .Homepage {
     margin-top: 20%;
+}
+
+.Homepage-background {
+    height: 95vh;
+    background-color:rgba(255, 255, 255, 0.555);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-y: 50%;
+    background-size: 100% auto;
+    position: relative;
+
+}
+
+.Homepage-background-opaque {
+    height: 95vh;
+    width: 100%;
+    background-image: url('./static/backgroundImage.jpg');
+    position: absolute;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-y: 50%;
+    background-size: 100vw auto;
+    
 }

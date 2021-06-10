@@ -30,7 +30,7 @@ function FormUploadPhoto({ goBack, uploadPhoto, photoFormData, submit }) {
       
       <input onChange={handleChange} name="file" type="file" accept="image/*" />
       <div ClassName="row">
-      <button onClick={handleBack}>Go Back</button>
+      <button onClick={handleBack}>←</button>
       <button onClick={handleSubmit} type="submit">SUBMIT</button>
       </div>
     </form>

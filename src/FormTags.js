@@ -1,39 +1,48 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+import "./FormTags.css";
 
 function FormTags({ tags, tagsFormData, goForward, goBack }) {
   const [currFormData, setCurrFormData] = useState(tagsFormData);
-console.log("tag form data ===>", currFormData);
+  console.log("tag form data ===>", currFormData);
 
   console.log(tags);
   function addToTags(evt) {
     evt.preventDefault();
-    console.log(evt.target.values);
-    setCurrFormData(currData => [...currData, evt.target.value]);
+    console.log("clicked!", evt.target.value);
+    if (currFormData.includes(evt.target.value)) {
+      setCurrFormData(currData => currData.filter(d => d !== evt.target.value))
+    }
     
+    else {
+    setCurrFormData(currData => [...currData, evt.target.value]);
+    }
   }
-  //TODO toggle button based, currently have duplicate issue
+
+
   function handleForward(evt) {
     evt.preventDefault();
-    const { name, value } = evt.target;
     goForward(currFormData);
   }
 
   function handleBack(evt) {
     evt.preventDefault();
-    const { name, value } = evt.target;
     goBack(currFormData);
   }
-  return(
+  return (
     <Form>
       <label htmlFor="tags">Choose tags:</label>
-
-      {tags.map(tag => <button onClick={addToTags} value={tag.handle}>{tag.description}</button>)}
-
-      <div ClassName="row">
-              <button onClick={handleBack}>Go Back</button>
-              <button onClick={handleForward}>Go Forward</button>
-            </div>
+      <div className="tag-buttons-list">
+      {tags.map(tag => <button className={`btn FormTag-Buttons ${currFormData.includes(tag.handle) ? "clicked" : ""}`} onClick={addToTags} value={tag.handle}>{tag.description}</button>)}
+      </div>
+      <div className="row">
+        <div className="col-6">
+          <button onClick={handleBack}>←</button>
+        </div>
+        <div className="col-6">
+          <button onClick={handleForward}>→</button>
+        </div>
+      </div>
     </Form>
   )
 }

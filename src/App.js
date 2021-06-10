@@ -58,11 +58,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavigationBar currUser={currUser} />
-        <div className="row">
-          <div className="col-10 offset-1">
             <Routes currUser={currUser} />
-          </div>
-        </div>
       </BrowserRouter>
     </div>
   );

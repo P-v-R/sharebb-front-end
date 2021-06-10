@@ -21,6 +21,7 @@ function ListingCard({ listing }) {
         <Card.Text>
           {description}
     </Card.Text>
+      {listing.tags.map(tag => <span class="badge badge-primary">{tag}</span>)}
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroupItem>Location: {city} {zip}</ListGroupItem>

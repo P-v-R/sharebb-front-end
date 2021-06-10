@@ -15,7 +15,7 @@ const center = {
 function MapSearch() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "YOUR_API_KEY"
+    googleMapsApiKey: "none"
   })
 
   const [map, setMap] = React.useState(null)

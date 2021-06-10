@@ -1,15 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .Logo {
   font-family: 'Fredoka One', cursive;
 }
 
+body {
+  background-color: #FAF0CA;
+}
 
+h1 {
+font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  font-family: 'Nanum Gothic', sans-serif;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

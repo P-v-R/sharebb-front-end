@@ -1,0 +1,25 @@
+.ListingAddForm {
+    margin-top: 5%;
+}
+
+.AddForm > form {
+    text-align: left;
+    background-color: #EE964B;
+    border-radius: 15px;
+    padding: 10%;
+}
+
+.AddForm label {
+    line-height: 0;
+    padding-top: 10px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1.2em;
+}
+
+.AddForm input {
+    margin-bottom: 15px;
+}
+
+.button-row {
+    width: 100%;
+}

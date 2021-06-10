@@ -26,7 +26,7 @@ function NavigationBar({currUser}) {
   }
   if (currUser) {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="Navigation-Bar" expand="lg">
           <Navbar.Brand href="/">sharebnb</Navbar.Brand>
           
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -36,7 +36,7 @@ function NavigationBar({currUser}) {
             </Nav>
             <Nav className="ml-auto">
               <Nav.Link href="/share">Add-listing</Nav.Link>
-              <NavDropdown title="UserProfile" id="basic-nav-dropdown">
+              <NavDropdown title={currUser.firstName} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/my-listings">My Listings</NavDropdown.Item>
                 <NavDropdown.Item href="/my-bookings">My Bookings</NavDropdown.Item>
                 <NavDropdown.Item href="/my-bookings">Messages</NavDropdown.Item>
