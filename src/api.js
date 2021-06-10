@@ -53,7 +53,7 @@ class ShareBnBApi {
    * returns [ { listing }, ...]
   */
 
-    static async getListings(searchTerm) {
+    static async getListings(searchTerm="") {
       if (searchTerm === "") {
         let res = await this.request(`listings`);
         return res.listings;
@@ -62,5 +62,20 @@ class ShareBnBApi {
       let res = await this.request(`listings?q=${searchTerm}`);
       return res.listings;
     }
+
+     /** Get all tags.  "searchTerm" => [listings]
+   * 
+   * returns [ { tags }, ...]
+  */
+
+      static async getTags(searchTerm="") {
+        if (searchTerm === "") {
+          let res = await this.request(`tags`);
+          return res.tags;
+        }
+    
+        let res = await this.request(`tags?q=${searchTerm}`);
+        return res.tags;
+      }
 }
 export default ShareBnBApi;

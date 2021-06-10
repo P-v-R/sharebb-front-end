@@ -1,9 +1,10 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
 
-function FormTags({ listingAddFormData, goForward, goBack }) {
-  const [currFormData, setCurrFormData] = useState(listingAddFormData);
+function FormTags({ tags, tagsFormData, goForward, goBack }) {
+  const [currFormData, setCurrFormData] = useState(tagsFormData);
 
+  
   function handleChange(evt) {
     const { name, value } = evt.target;
     setCurrFormData(currData => ({ ...currData, [name]: value }));
@@ -20,50 +21,8 @@ function FormTags({ listingAddFormData, goForward, goBack }) {
   }
   return(
     <Form>
-      <p>Address:</p>
-         <Form.Label htmlFor="ListingAddForm-address">Street Address</Form.Label>
-        <Form.Control
-          id="ListingAddForm-address"
-          name="address"
-          type="text"
-          onChange={handleChange}
-          value={listingAddFormData.address}
-          required
-        />
-         <Form.Label htmlFor="ListingAddForm-unit">Unit (Optional)</Form.Label>
-        <Form.Control
-          id="ListingAddForm-unit"
-          name="unit"
-          type="text"
-          onChange={handleChange}
-          value={listingAddFormData.unit}
-        />
-        <Form.Label htmlFor="ListingAddForm-city">City</Form.Label>
-        <Form.Control
-          id="ListingAddForm-city"
-          name="city"
-          type="text"
-          onChange={handleChange}
-          value={listingAddFormData.city}
-        />
-        <Form.Label htmlFor="ListingAddForm-zip">Zipcode</Form.Label>
-        <Form.Control
-          id="ListingAddForm-zip"
-          name="zip"
-          type="text"
-          onChange={handleChange}
-          value={listingAddFormData.zip}
-        />
-
-        <Form.Label htmlFor="ListingAddForm-state">State</Form.Label>
-        <Form.Control
-          id="ListingAddForm-state"
-          name="state"
-          type="text"
-          onChange={handleChange}
-          value={listingAddFormData.state}
-        />
-         <div ClassName="row">
+      <p>add tags here</p>
+      <div ClassName="row">
               <button onClick={handleBack}>Go Back</button>
               <button onClick={handleForward}>Go Forward</button>
             </div>

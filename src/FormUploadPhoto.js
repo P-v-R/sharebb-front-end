@@ -8,27 +8,34 @@ import ShareBnBApi from "./api.js";
  * 
  * simple form to upload file 
  */
-function UploadPhotoForm() {
-  const [file, setFile] = useState(null)
+function FormUploadPhoto({ goBack, uploadPhoto, photoFormData }) {
+  const [currFormData, setCurrFormData] = useState(photoFormData);
   console.log("SimpleFile mounted")
-  async function submitFile(){
-    let resp = await ShareBnBApi.uploadImage(file);
-    // console.log("resp =====>", resp)
-  }
+
   async function handleSubmit(evt) {
     evt.preventDefault()
     // console.log("event file ==>", file)
-    await submitFile();
+    await uploadPhoto(currFormData);
   }
   function handleChange(evt) {
-    setFile(evt.target.files[0])
+    setCurrFormData(evt.target.files[0]);
   }
+
+  function handleBack(evt) {
+    goBack(currFormData);
+  }
+
+    //TODO save uploaded photo before submit if we go back on the form
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data" >
+      
       <input onChange={handleChange} name="file" type="file" accept="image/*" />
+      <div ClassName="row">
+      <button onClick={handleBack}>Go Back</button>
       <button type="submit">SUBMIT</button>
+      </div>
     </form>
   )
 }
 // very important attr we will need on form // look for req.files 
-export default UploadPhotoForm;
+export default FormUploadPhoto;
