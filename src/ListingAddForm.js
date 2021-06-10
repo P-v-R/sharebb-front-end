@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Form } from "react-bootstrap";
 import Error from "./Error";
 import UploadPhotoForm from "./FormUploadPhoto";
 import FormListingInfo from "./FormListingInfo";
@@ -9,7 +8,7 @@ import ShareBnBApi from "./api";
 
 
 function ListingAddForm({ currUser }) {
-  const [listingFormData, setListingFormData] = useState({ownerId: currUser.id});
+  const [listingFormData, setListingFormData] = useState("");
   const [tagsFormData, setTagsFormData] = useState("");
   const [photoFormData, setPhotoFormData] = useState(null);
   const [formPage, setFormPage] = useState(1)
@@ -18,6 +17,7 @@ function ListingAddForm({ currUser }) {
 
   console.log("app renders")
   console.log("FormData", listingFormData)
+  console.log("Tag Data", tagsFormData)
   useEffect(function fetchTags(tags) {
     async function fetchTagList() {
       try {
@@ -30,7 +30,7 @@ function ListingAddForm({ currUser }) {
     fetchTagList();
   }, [])
 
-  function goForward(formPageData) {
+  function goForwardSaveListing(formPageData) {
     setListingFormData(currData => {
       let setFormData = currData;
       for (let key in formPageData) {
@@ -41,7 +41,7 @@ function ListingAddForm({ currUser }) {
     setFormPage(currPage => currPage + 1);
   }
 
-  function goBack(formPageData) {
+  function goBackSaveListing(formPageData) {
     setListingFormData(currData => {
       let setFormData = currData;
       for (let key in formPageData) {
@@ -52,6 +52,32 @@ function ListingAddForm({ currUser }) {
     setFormPage(currPage => currPage - 1);
   }
   
+  function goForwardSaveTags(formPageData) {
+    setTagsFormData(currData => {
+      let setFormData = currData;
+      for (let tag of formPageData) {
+        setFormData = ([ ...setFormData, tag ])
+      }
+      return setFormData
+      });
+    setFormPage(currPage => currPage + 1);
+  }
+
+  function goBackSaveTags(formPageData) {
+    setTagsFormData(currData => {
+      let setFormData = currData;
+      for (let tag of formPageData) {
+        setFormData = ([ ...setFormData, tag ])
+      }
+      return setFormData
+      });
+    setFormPage(currPage => currPage - 1);
+  }
+  
+  function goBackSavePhoto(formPageData) {
+    photoFormData(formPageData);
+    setFormPage(currPage => currPage + 1);
+  }
   function handleChange(evt) {
     const { name, value } = evt.target;
     setListingFormData(currData => ({ ...currData, [name]: value }));
@@ -64,14 +90,18 @@ function ListingAddForm({ currUser }) {
 
   async function submit(photo) {
     try {
+      listingFormData.ownerId = currUser.id;
       let listingRes = await ShareBnBApi.addListing(listingFormData);
       console.log(listingRes.id);
+      let listingId = listingRes.id
       if (photo) {
-        let photoRes = await ShareBnBApi.uploadImage(photo, listingRes.id);
+        let photoRes = await ShareBnBApi.uploadImage(photo, listingId);
         let listingPatch = await ShareBnBApi.patchListing();
       }
       if (tagsFormData) {
-        let tagsRes = await ShareBnBApi.addTags(tagsFormData);
+        for (let tag of tags) {
+          let tagsRes = await ShareBnBApi.addTagToListing(listingId, tag);
+        }
       }
     } catch (err) {
       setErrors(err);
@@ -85,10 +115,10 @@ function ListingAddForm({ currUser }) {
         <div className="col-1 col-sm-2 col-lg-4"></div>
         <div className="col-10 col-sm-8 col-lg-4">
           <div ClassName="Forms">
-            {(formPage === 1) && <FormListingInfo listingFormData={listingFormData} goForward={goForward} />}
-            {(formPage === 2) && <FormAddress listingFormData={listingFormData} goForward={goForward} goBack={goBack}/>}
-            {(formPage === 3) && <FormTags tags={tags} tagsFormData={tagsFormData} goForward={goForward} goBack={goBack} />}
-            {(formPage === 4) && <UploadPhotoForm goBack={goBack} uploadPhoto={uploadPhoto} photoFormData={photoFormData} submit={submit}/>}
+            {(formPage === 1) && <FormListingInfo listingFormData={listingFormData} goForward={goForwardSaveListing} />}
+            {(formPage === 2) && <FormAddress listingFormData={listingFormData} goForward={goForwardSaveListing} goBack={goBackSaveListing}/>}
+            {(formPage === 3) && <FormTags tags={tags} tagsFormData={tagsFormData} goForward={goForwardSaveTags} goBack={goBackSaveTags} />}
+            {(formPage === 4) && <UploadPhotoForm goBack={goBackSavePhoto} uploadPhoto={uploadPhoto} photoFormData={photoFormData} submit={submit}/>}
           </div>
       {errors && errors.map(e => <Error error={e} />)}
       </div>

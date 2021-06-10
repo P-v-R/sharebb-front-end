@@ -10,11 +10,13 @@ function FormAddress({ listingFormData, goForward, goBack }) {
   }
 
   function handleForward(evt) {
+    evt.preventDefault();
     const { name, value } = evt.target;
     goForward(currFormData);
   }
 
   function handleBack(evt) {
+    evt.preventDefault();
     const { name, value } = evt.target;
     goBack(currFormData);
   }

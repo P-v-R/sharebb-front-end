@@ -10,6 +10,7 @@ function FormListingInfo({ listingFormData, goForward }) {
   }
 
   function handleForward(evt) {
+    evt.preventDefault();
     const { name, value } = evt.target;
     goForward(currFormData);
   }
@@ -29,7 +30,7 @@ function FormListingInfo({ listingFormData, goForward }) {
         <Form.Label htmlFor="FormListingInfo-description">Description</Form.Label>
         <Form.Control
           id="FormListingInfo-description"
-          name="lastName"
+          name="description"
           type="text"
           autoComplete="last-name"
           onChange={handleChange}
