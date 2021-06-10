@@ -27,11 +27,11 @@ function NavigationBar() {
             <Nav className="ml-auto">
               <Nav.Link href="/share">Share?</Nav.Link>
               <NavDropdown title="UserProfile" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">My Listings</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">My Bookings</NavDropdown.Item>
+                <NavDropdown.Item href="/my-listings">My Listings</NavDropdown.Item>
+                <NavDropdown.Item href="/my-bookings">My Bookings</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">Log Out</NavDropdown.Item>
+                <NavDropdown.Item href="/my-profile">Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/log-out">Log Out</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

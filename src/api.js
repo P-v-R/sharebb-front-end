@@ -35,10 +35,10 @@ class ShareBnBApi {
 
   
  // Individual API routes  
- static async uploadImage(file) {
+ static async uploadImage(file, id) {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("listingKey", uuid());
+    formData.append("listingKey", id);
       console.log("uploading file ===>", formData.file)
       console.log("uploading uuid key ===>", formData.listingKey)
       let res = await this.request(`image`, formData , 'post', { headers: {
@@ -48,6 +48,7 @@ class ShareBnBApi {
       return res;
     }
 
+  /*----------LISTINGS------------------------------------------------- */
    /** Get all listings.  "searchTerm" => [listings]
    * 
    * returns [ { listing }, ...]
@@ -63,12 +64,72 @@ class ShareBnBApi {
       return res.listings;
     }
 
-     /** Get all tags.  "searchTerm" => [listings]
+    /** Get one listing.
    * 
-   * returns [ { tags }, ...]
+   * returns { listing }
   */
 
+     static async getListing(id) {
+  
+      let res = await this.request(`listings/${id}`);
+      return res.listing;
+    }
+
+    /** Add a new listings.  "searchTerm" => [listings]
+   * returns [ { listing }, ...]
+  */
+    static async addListing(data) {
+       let res = await this.request('listings', data, 'post');
+       return res.listing;
+     }
+
+     /** Add a new listings.  "searchTerm" => [listings]
+   * returns [ { listing }, ...]
+  */
+    static async patchListing(listingId) {
+      let data = {photoUrl: listingId}
+      let res = await this.request(`listings/${listingId}`, data, 'patch');
+      return res.listing;
+    }
+
+    /** Add a tags for listings. 
+     * { listingId, tagHandle }
+     * returns: { listing_id, tag_handle }
+  */
+     static async addTagToListing({listingId, tagHandle}) {
+      let res = await this.request(`listings/tags`, {listingId, tagHandle}, 'post');
+      return res;
+    }
+
+/*----------USERS------------------------------------------------- */
+   /** Get user.  userId => { user }
+   * 
+  */
+
+    static async getUser(id) {
+      let res = await this.request(`users/${id}`);
+      return res.user;
+    }
+
+
+/*----------TAGS------------------------------------------------- */
+     /** Get all tags.  "searchTerm" => [listings]
+   * returns [ { tags }, ...]
+  */
       static async getTags(searchTerm="") {
+        if (searchTerm === "") {
+          let res = await this.request(`tags`);
+          return res.tags;
+        }
+    
+        let res = await this.request(`tags?q=${searchTerm}`);
+        return res.tags;
+      }
+
+
+      /** Add tags for listing TODO
+  */
+       static async getTags(searchTerm="") {
         if (searchTerm === "") {
           let res = await this.request(`tags`);
           return res.tags;

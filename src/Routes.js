@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import ListingAddForm from "./ListingAddForm";
 
-function Routes() {
+function Routes({currUser}) {
   return (
     <Switch>
       <Route exact path="/">
@@ -18,14 +18,14 @@ function Routes() {
       <Route exact path="/signup">
         <SignUpForm />
       </Route>
+      <Route path="/listings/:listingId">
+        <ListingPage />
+      </Route>
       <Route exact path="/listings">
         <Listings />
       </Route>
-      <Route exact path="/listing/:id">
-        <ListingPage />
-      </Route>
       <Route exact path="/share">
-        <ListingAddForm />
+        <ListingAddForm currUser={currUser}/>
       </Route>
       <Redirect to="/"/>
     </Switch>

@@ -8,14 +8,13 @@ import ShareBnBApi from "./api.js";
  * 
  * simple form to upload file 
  */
-function FormUploadPhoto({ goBack, uploadPhoto, photoFormData }) {
+function FormUploadPhoto({ goBack, uploadPhoto, photoFormData, submit }) {
   const [currFormData, setCurrFormData] = useState(photoFormData);
   console.log("SimpleFile mounted")
 
   async function handleSubmit(evt) {
     evt.preventDefault()
-    // console.log("event file ==>", file)
-    await uploadPhoto(currFormData);
+    submit(currFormData);
   }
   function handleChange(evt) {
     setCurrFormData(evt.target.files[0]);
@@ -32,7 +31,7 @@ function FormUploadPhoto({ goBack, uploadPhoto, photoFormData }) {
       <input onChange={handleChange} name="file" type="file" accept="image/*" />
       <div ClassName="row">
       <button onClick={handleBack}>Go Back</button>
-      <button type="submit">SUBMIT</button>
+      <button onClick={handleSubmit} type="submit">SUBMIT</button>
       </div>
     </form>
   )

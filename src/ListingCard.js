@@ -5,7 +5,7 @@ function ListingCard({ listing }) {
 
   const { id, ownerid, title, description, photourl, priceperhour, minhours, city, zip } = listing;
   return (
-    <Link to={`/listings/${id}`}>
+    <Link exact to={`/listings/${id}`}>
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={`https://sharebnb-mo.s3.us-east-2.amazonaws.com/${photourl}`} />
       <Card.Body>
@@ -18,10 +18,6 @@ function ListingCard({ listing }) {
         <ListGroupItem>Location: {city} {zip}</ListGroupItem>
         <ListGroupItem>$ {priceperhour} / hr</ListGroupItem>
       </ListGroup>
-      <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
     </Card>
     </Link>
   )

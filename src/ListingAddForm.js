@@ -8,8 +8,8 @@ import FormTags from "./FormTags";
 import ShareBnBApi from "./api";
 
 
-function ListingAddForm({add}) {
-  const [listingFormData, setListingFormData] = useState("");
+function ListingAddForm({ currUser }) {
+  const [listingFormData, setListingFormData] = useState({ownerId: currUser.id});
   const [tagsFormData, setTagsFormData] = useState("");
   const [photoFormData, setPhotoFormData] = useState(null);
   const [formPage, setFormPage] = useState(1)
@@ -26,8 +26,8 @@ function ListingAddForm({add}) {
       } catch (err) {
         setErrors(err);
       }
-      fetchTagList();
     }
+    fetchTagList();
   }, [])
 
   function goForward(formPageData) {
@@ -62,14 +62,22 @@ function ListingAddForm({add}) {
     // console.log("resp =====>", resp)
   }
 
-  async function handleSubmit(evt) {
-    evt.preventDefault();
+  async function submit(photo) {
     try {
-      // await signUp(signUpFormData);
+      let listingRes = await ShareBnBApi.addListing(listingFormData);
+      console.log(listingRes.id);
+      if (photo) {
+        let photoRes = await ShareBnBApi.uploadImage(photo, listingRes.id);
+        let listingPatch = await ShareBnBApi.patchListing();
+      }
+      if (tagsFormData) {
+        let tagsRes = await ShareBnBApi.addTags(tagsFormData);
+      }
     } catch (err) {
       setErrors(err);
     }
   }
+
 
   return (
     <div className="ListingAddForm">
@@ -80,7 +88,7 @@ function ListingAddForm({add}) {
             {(formPage === 1) && <FormListingInfo listingFormData={listingFormData} goForward={goForward} />}
             {(formPage === 2) && <FormAddress listingFormData={listingFormData} goForward={goForward} goBack={goBack}/>}
             {(formPage === 3) && <FormTags tags={tags} tagsFormData={tagsFormData} goForward={goForward} goBack={goBack} />}
-            {(formPage === 4) && <UploadPhotoForm goBack={goBack} uploadPhoto={uploadPhoto} photoFormData={photoFormData}/>}
+            {(formPage === 4) && <UploadPhotoForm goBack={goBack} uploadPhoto={uploadPhoto} photoFormData={photoFormData} submit={submit}/>}
           </div>
       {errors && errors.map(e => <Error error={e} />)}
       </div>

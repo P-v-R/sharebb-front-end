@@ -4,11 +4,20 @@ import { BrowserRouter } from "react-router-dom";
 import './App.css';
 
 function App() {
+  const currUser = {
+    "id": 1,
+    "firstName": "mo",
+    "lastName": "enokida",
+    "email": "mo@mo.com",
+    "bio": "bio test",
+    "isAdmin": false
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
       <NavigationBar />
-      <Routes />
+      <Routes currUser={currUser}/>
       </BrowserRouter>
     </div>
   );
