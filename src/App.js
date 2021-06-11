@@ -27,7 +27,22 @@ const currUser = {
         "ownerId": 1,
         "title": "mo test listing",
         "description": "this is my listing description",
-        "photoUrl": "1.jpg",
+        "photourl": "1.jpg",
+        "pricePerHour": "50.50",
+        "minHours": 2
+      },
+      {
+        "id": 20,
+        "address": "125 test st",
+        "unit": "A",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zip": "90064",
+        "country": "USA",
+        "ownerId": 1,
+        "title": "mo test listing 2",
+        "description": "this is my listing description",
+        "photourl": "3.jpg",
         "pricePerHour": "50.50",
         "minHours": 2
       }
@@ -39,7 +54,8 @@ const currUser = {
         "renterId": 1,
         "startDate": "2021-07-20T07:00:00.000Z",
         "numHours": 4,
-        "totalPrice": "400"
+        "totalPrice": "400",
+        "photourl": "3.jpg"
       },
       {
         "id": 2,
@@ -47,7 +63,8 @@ const currUser = {
         "renterId": 1,
         "startDate": "2021-07-21T07:00:00.000Z",
         "numHours": 2,
-        "totalPrice": "200"
+        "totalPrice": "200",
+        "photourl": "3.jpg"
       }
     ]
 };

@@ -5,6 +5,13 @@ import ShareBnBApi from "./api";
 import MapSearch from "./MapSearch";
 import "./Listings.css";
 
+/**Listings Component
+ * 
+ * Props: 
+ * - currUser{}
+ * 
+ * Routes -> Listings
+ */
 function Listings() {
   const [isLoading, setIsLoading] = useState(true);
   const [listings, setListings] = useState(null);

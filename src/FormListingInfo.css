@@ -1,0 +1,22 @@
+.Form-button-fb {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: #0D3B66;
+    color: #EE964B;
+    border: none;
+    font-size: 2em;
+}
+
+.Form-button-submit {
+    height: 50px;
+    width: 110px;
+    border-radius: 25px;
+    background-color: #0D3B66;
+    color: #EE964B;
+    border: none;
+    font-size: 1.5em;
+    padding: 10px;
+    
+
+}

@@ -1,0 +1,26 @@
+.ListingPage-image {
+    max-width: 100%;
+}
+
+
+.ListingPage-title {
+    text-align: left;
+    max-width: 100%;
+    margin-top: 2%;
+    text-transform: capitalize;
+}
+
+.ListingPage-description {
+    max-width: 100%;
+}
+
+.ListingPage-msg-btn {
+    height: 100px;
+    width: 250px;
+    font-size: 1.5em;
+    font-family: 'Nanum Gothic', sans-serif;
+    border-radius: 50px;
+    color: white;
+    background-color: #0D3B66;
+    margin-top: 30%;
+}

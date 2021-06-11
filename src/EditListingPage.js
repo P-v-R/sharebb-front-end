@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Error from "./Error";
 import UploadPhotoForm from "./FormUploadPhoto";
 import FormListingInfo from "./FormListingInfo";
@@ -7,7 +8,8 @@ import FormTags from "./FormTags";
 import ShareBnBApi from "./api";
 import "./ListingAddForm.css";
 
-/** ListingAddForm Component
+
+/** EditListingPage Component
  * 
  * Props:
  * - currUser
@@ -19,33 +21,62 @@ import "./ListingAddForm.css";
  * - formPage integer
  * - errors []
  * - tags []
+ * - isLoading boolean
  * 
- * Routes -> ListingAddForm -> FormListingInfo
+ * Params: 
+ * - id integer
+ * 
+ * Routes -> EditListingPage -> FormListingInfo
  *                           -> FormAddress
  *                           -> FormTags
  *                           -> FormUploadPhoto
  */
-function ListingAddForm({ currUser }) {
-  const [listingFormData, setListingFormData] = useState("");
+function EditListingPage({ currUser }) {
+  const { id } = useParams();
+  const [listingFormData, setListingFormData] = useState(null);
   const [tagsFormData, setTagsFormData] = useState([]);
   const [photoFormData, setPhotoFormData] = useState(null);
   const [formPage, setFormPage] = useState(1)
   const [errors, setErrors] = useState(null);
   const [tags, setTags] = useState(null)
+  const [isLoading, setIsLoading] = useState(true);
 
   console.log("app renders")
   console.log("FormData", listingFormData)
-  console.log("Tag Data", tagsFormData)
-  useEffect(function fetchTags(tags) {
-    async function fetchTagList() {
+  console.log("Tag Data -====", tagsFormData)
+
+  useEffect(function fetchEditDataOnMount(tags) {
+    async function fetchListingAndTags() {
       try {
         let tags = await ShareBnBApi.getTags();
+        let listing = await ShareBnBApi.getListing(+id);
         setTags(tags);
+
+        const { address, unit, city, state, zip, country, ownerid, title, description, photourl, priceperhour, minhours } = listing;
+        setListingFormData({
+          title: title,
+          description: description,
+          pricePerHour: priceperhour,
+          minHours: minhours,
+          address: address,
+          unit: unit,
+          city: city,
+          state: state,
+          zip: zip,
+          country: country,
+          ownerId: ownerid
+        });
+        setTagsFormData((tags
+          .filter(tag => listing.tags.includes(tag.description)))
+          .map(tag => tag.handle));
+          
+        setIsLoading(false);
       } catch (err) {
         setErrors(err);
+        setIsLoading(false);
       }
     }
-    fetchTagList();
+    fetchListingAndTags();
   }, [])
 
   function goForwardSaveListing(formPageData) {
@@ -135,15 +166,19 @@ function ListingAddForm({ currUser }) {
         setFormPage(1);
       }
     }
-   else {
-     setFormPage(1);
-   }
+    else {
+      setFormPage(1);
+    }
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>
   }
 
 
   return (
     <div className="ListingAddForm">
-      <h1>add a <span className="logo">sharebnb</span></h1>
+      <h1>edit my <span className="logo">sharebnb</span></h1>
       <div className="row">
         <div className="col-1 col-sm-2 col-lg-4"></div>
         <div className="col-10 col-sm-8 col-lg-4">
@@ -163,4 +198,4 @@ function ListingAddForm({ currUser }) {
   );
 }
 
-export default ListingAddForm;
+export default EditListingPage;

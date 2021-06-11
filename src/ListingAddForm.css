@@ -1,5 +1,5 @@
 .ListingAddForm {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .AddForm > form {
@@ -18,8 +18,14 @@
 
 .AddForm input {
     margin-bottom: 15px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .button-row {
     width: 100%;
+}
+
+.logo {
+    font-family: 'Fredoka One', cursive !important;
+    font-size: 1.3em;
 }

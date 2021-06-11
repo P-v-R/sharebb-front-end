@@ -5,10 +5,12 @@
 .App {
   text-align: center;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .Logo {
   font-family: 'Fredoka One', cursive;
+  z-index: 100;
 }
 
 body {

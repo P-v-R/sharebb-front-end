@@ -1,0 +1,40 @@
+.MessagesList{
+    width: 100%;
+    padding-top:5%;
+    border-radius: 0 0 20px 20px;
+}
+
+.bookings {
+    background-color: #F95738;
+}
+
+.listings {
+    background-color: #EE964B;
+}
+
+ul {
+    list-style: none;
+    width: 100%
+}
+.MessagesList-li {
+    height: 50px;
+    width: 100%;
+    border: 2px solid #FAF0CA;
+}
+
+.MessagesList-li.current {
+    border: 2px solid #FAF0CA;
+    background-color: #F95738;
+}
+
+.Message {
+    background-color: #FAF0CA;
+    height: 60vh;
+    margin: 0% 10% 10% 10%;
+    border-radius: 15px;
+    overflow: scroll;
+}
+
+.MessagesList-msg {
+
+}

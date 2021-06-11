@@ -36,10 +36,10 @@ function NavigationBar({currUser}) {
             </Nav>
             <Nav className="ml-auto">
               <Nav.Link href="/share">Add-listing</Nav.Link>
-              <NavDropdown title={currUser.firstName} id="basic-nav-dropdown">
+              <NavDropdown alignRight title={currUser.firstName} id="basic-nav-dropdown">
                 <NavDropdown.Item href="/my-listings">My Listings</NavDropdown.Item>
                 <NavDropdown.Item href="/my-bookings">My Bookings</NavDropdown.Item>
-                <NavDropdown.Item href="/my-bookings">Messages</NavDropdown.Item>
+                <NavDropdown.Item href="/my-messages">Messages</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/my-profile">Profile</NavDropdown.Item>
                 <NavDropdown.Item href="/log-out">Log Out</NavDropdown.Item>

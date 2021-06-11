@@ -1,8 +1,20 @@
 import { useState } from "react";
 import Error from "./Error";
 import { Form } from "react-bootstrap";
+
+
+/**ProfileEditForm Component
+ * 
+ * Props
+ * - currUser {}
+ * 
+ * State
+ * -formData {}
+ * -errors []
+ * 
+ * ProfilePage -> ProfileEditForm
+*/
 function ProfileEditForm({ currUser }) {
-  //TODO needs an endpoint 
   const [formData, setFormData] = useState({ firstName: currUser.firstName, lastName: currUser.lastName, bio: currUser.bio})
   const [errors, setErrors] = useState(null);
 

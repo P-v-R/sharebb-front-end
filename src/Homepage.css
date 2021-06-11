@@ -1,36 +1,42 @@
 .Logo {
     font-family: 'Fredoka One', cursive;
-    font-size: 2.5em;
+    font-size: 9em;
     color: #0D3B66 !important;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #F4D35E;
     margin-left: 10px;
     letter-spacing: 2px;
     padding: 0;
+    z-index: 999 !important;
 }
 
 .Homepage {
-    margin-top: 20%;
+    margin-top: 5%;
 }
 
-.Homepage-background {
-    height: 95vh;
-    background-color:rgba(255, 255, 255, 0.555);
+.Homepage-background-opaque {
+    display: block;
+    height: 150vh;
+    width: 105vw;
+    background-image:linear-gradient(to top, rgba(255, 255, 255, 0.001), rgba(65, 109, 255, 0.753));
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position-y: 50%;
     background-size: 100% auto;
     position: relative;
+    overflow-x: visible;
+    z-index: -1;
 
 }
 
-.Homepage-background-opaque {
-    height: 95vh;
-    width: 100%;
+.Homepage-background {
+    height: 150vh;
+    width: 115vw;
     background-image: url('./static/backgroundImage.jpg');
     position: absolute;
-    z-index: -1;
+    z-index: 0;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position-y: 50%;
-    background-size: 100vw auto;
+    background-position: center;
+    background-size: 100%;
     
 }

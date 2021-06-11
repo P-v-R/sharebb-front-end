@@ -136,5 +136,13 @@ class ShareBnBApi {
         let res = await this.request('messages', msgData, 'post');
         return res.message;
       }
+
+      static async getMessages(currUserId) {
+        let sent = await this.request(`messages?fromUserId=${currUserId}`);
+        let received = await this.request(`messages?toUserId=${currUserId}`);
+        let res = { sent: sent.messages, received : received.msg}
+        return res;
+      }
 }
 export default ShareBnBApi;
+

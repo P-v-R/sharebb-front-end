@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ShareBnBApi from "./api";
 import MessageOwnerForm from "./MessageOwnerForm";
+import "./ListingPage.css";
 
-function ListingPage({currUser}) {
+/**ListingPage Component
+ * 
+ * Props: 
+ * - currUser{}
+ * 
+ * Routes -> ListingPage
+ */
+function ListingPage({ currUser }) {
   const { listingId } = useParams();
   const [listing, setListing] = useState(null);
   const [owner, setOwner] = useState(null);
@@ -16,7 +24,7 @@ function ListingPage({currUser}) {
       try {
         let listing = await ShareBnBApi.getListing(listingId);
         let owner = await ShareBnBApi.getUser(listing.ownerid);
-        setListing(listing); 
+        setListing(listing);
         setOwner(owner);
         setIsLoading(false);
       } catch (err) {
@@ -25,31 +33,35 @@ function ListingPage({currUser}) {
       }
     }
     fetchListingById();
-  },[])
+  }, [])
 
   if (isLoading) {
     return (
       <p>Loading...</p>
     )
   }
-  
+
   if (errors) {
     <p>{errors}</p>
   }
   const { id, address, unit, city, state, title, description, minhours, ownerid, photourl, priceperhour } = listing;
 
   return (
-    <div>
-      <p>THIS IS THE page for each listing</p>
-      <h1>{title}</h1>
-      <img src={`https://sharebnb-mo.s3.us-east-2.amazonaws.com/${photourl}`} />
-      <h2>{description} </h2>
-      {!showMessage && <button onClick={() => setShowMessage(true)}>Ask about this listing</button>}
-      {showMessage && (
-        <div>
-          <MessageOwnerForm owner={owner} listing={listing} currUser={currUser}/>
+    <div className="ListingPage row">
+      <div className="col-7 offset-1">
+        <h1 className="ListingPage-title">{title}</h1>
+        <img className="ListingPage-image" src={`https://sharebnb-mo.s3.us-east-2.amazonaws.com/${photourl}`} />
+        <h2 className="ListingPage-description">{description} </h2> 
         </div>
-      )}
+        <div className="col-4">
+          {!showMessage && <button className="ListingPage-msg-btn" onClick={() => setShowMessage(true)}>✉️ Message Owner</button>}
+          {showMessage && (
+            <div>
+              <MessageOwnerForm owner={owner} listing={listing} currUser={currUser} />
+            </div>
+          )}
+       
+      </div>
     </div>
   )
 

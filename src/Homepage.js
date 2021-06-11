@@ -3,7 +3,7 @@ import "./Homepage.css";
 /** Homepage Component
  * 
  * Props:
- * - currUser()
+ * - currUser {}
  * 
  * Routes -> Homepage
  */

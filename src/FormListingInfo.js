@@ -1,6 +1,16 @@
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+import "./FormListingInfo.css";
 
+/**FormListingInfo Component
+ * 
+ * Props:
+ * - listingFormData {}
+ * - goForward()
+ * 
+ * ListingAddForm -> FormListingInfo
+ * EditListingPage -> FormListingInfo
+ */
 function FormListingInfo({ listingFormData, goForward }) {
   const [currFormData, setCurrFormData] = useState(listingFormData);
 
@@ -11,7 +21,6 @@ function FormListingInfo({ listingFormData, goForward }) {
 
   function handleForward(evt) {
     evt.preventDefault();
-    const { name, value } = evt.target;
     goForward(currFormData);
   }
 
@@ -57,10 +66,8 @@ function FormListingInfo({ listingFormData, goForward }) {
         />
 
             <div ClassName="row button-row">
-              <div className="col-6">
-              </div>
-              <div className="col-6">
-                <button onClick={handleForward}>→</button>
+              <div className="col-3 offset-9">
+                <button className="Form-button-fb" onClick={handleForward}>→</button>
               </div>
               
             </div>

@@ -3,14 +3,22 @@ import Error from "./Error";
 import { Form } from "react-bootstrap";
 import ProfileEditForm from "./ProfileEditForm";
 
-function ProfilePage({ currUser }) {
-  const [loginFormData, setLoginFormData] = useState({ username: "", password: "" })
-  const [errors, setErrors] = useState(null);
 
-  function handleChange(evt) {
-    const { name, value } = evt.target;
-    setLoginFormData(currData => ({ ...currData, [name]: value }));
-  }
+/**ProfilePage Component
+ * 
+ * Props
+ * - currUser {}
+ * 
+ * State
+ * -profileFormData {}
+ * -errors []
+ * 
+ * ProfilePage -> ProfileEditForm
+*/
+
+//TODO add info about bookings and listings??
+function ProfilePage({ currUser }) {
+  const [errors, setErrors] = useState(null);
 
 
 

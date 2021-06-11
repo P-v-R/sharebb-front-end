@@ -9,6 +9,7 @@ import MyListingsPage from "./MyListingsPage";
 import MyBookingsPage from "./MyBookingsPage";
 import ProfilePage from "./ProfilePage";
 import MessagesPage from "./MessagesPage";
+import EditListingPage from "./EditListingPage";
 
 
 /** Routes Component
@@ -51,8 +52,17 @@ function Routes({currUser}) {
       <Route exact path="/my-messages">
         <MessagesPage currUser={currUser} />
       </Route>
+      <Route path="/my-messages/bookings/:id">
+        <MessagesPage currUser={currUser} />
+      </Route>
+      <Route path="/my-messages/listings/:id">
+        <MessagesPage currUser={currUser} />
+      </Route>
       <Route path="/listings/:listingId">
         <ListingPage currUser={currUser}/>
+      </Route>
+      <Route exact path="/share/edit/:id">
+        <EditListingPage currUser={currUser} />
       </Route>
       <Route exact path="/listings">
         <Listings />

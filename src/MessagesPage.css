@@ -1,0 +1,15 @@
+.message-button-bookings {
+padding-top: 10px;
+ margin: 0;
+ border: none;
+ background-color: #F95738;
+border-radius: 25px 25px 0 0;
+}
+
+.message-button-listings {
+ padding-top: 10px;
+ margin: 0;
+ border: none;
+ background-color: #EE964B;
+ border-radius: 25px 25px 0 0;
+}

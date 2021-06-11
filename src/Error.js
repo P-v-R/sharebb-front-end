@@ -1,5 +1,10 @@
 import { Alert } from "react-bootstrap";
 
+/**Error Component
+ * 
+ * Props:
+ * - errors ""
+ */
 function Error({error}) {
   return (
     <Alert variant='danger'>
