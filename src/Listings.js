@@ -46,8 +46,7 @@ function Listings() {
             
             <div className="Listings-container d-flex flex-wrap justify-content-around">
               <ul className="Listings-ul">
-
-                {listings.map(listing => <li key={listing.id}><ListingCard key={listing.id} listing={listing} /></li>)}
+                {listings && listings.map(listing => <li key={listing.id}><ListingCard key={listing.id} listing={listing} /></li>)}
               </ul>
           </div>
           </div>

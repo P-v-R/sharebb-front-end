@@ -8,7 +8,7 @@ import ShareBnBApi from "./api.js";
  * 
  * simple form to upload file 
  */
-function FormUploadPhoto({ goBack, uploadPhoto, photoFormData, submit }) {
+function FormUploadPhoto({ goBack, photoFormData, submit }) {
   const [currFormData, setCurrFormData] = useState(photoFormData);
   console.log("SimpleFile mounted")
 

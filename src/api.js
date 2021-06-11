@@ -60,7 +60,7 @@ class ShareBnBApi {
         return res.listings;
       }
   
-      let res = await this.request(`listings?q=${searchTerm}`);
+      let res = await this.request(`listings/search/${searchTerm}`);
       return res.listings;
     }
 

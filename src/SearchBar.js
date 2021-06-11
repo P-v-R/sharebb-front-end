@@ -23,6 +23,7 @@ function SearchBar({search, initialSearchTerm }) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log("searching", searchTerm)
     search(searchTerm);
   }
 

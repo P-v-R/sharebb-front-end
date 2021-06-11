@@ -76,8 +76,8 @@ function ListingAddForm({ currUser }) {
   }
   
   function goBackSavePhoto(formPageData) {
-    photoFormData(formPageData);
-    setFormPage(currPage => currPage + 1);
+    setPhotoFormData(formPageData);
+    setFormPage(currPage => currPage - 1);
   }
   function handleChange(evt) {
     const { name, value } = evt.target;
