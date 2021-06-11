@@ -1,4 +1,5 @@
 import "./Homepage.css";
+import {motion} from "framer-motion"
 
 /** Homepage Component
  * 
@@ -14,13 +15,17 @@ function Homepage({ currUser }) {
       <div className="row Homepage-background">
         <div className="row Homepage-background-opaque">
           <div className="col-10 offset-1">
-            <div className="Homepage">
+            <motion.div className="Homepage"
+            animate={{ x: 0 }}
+            initial={{ x: 2000 }}
+            transition={{delay:1}}
+            >
               <h1 className="Logo">sharebnb</h1>
               <p>share blah blah blah share</p>
 
               <a href="/login"><button>Log In</button></a>
               <a href="/signup"><button>Sign Up</button></a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -30,10 +35,14 @@ function Homepage({ currUser }) {
     <div className="row Homepage-background">
       <div className="Homepage-background-opaque">
         <div className="col-10 offset-1">
-          <div className="Homepage">
+          <motion.div className="Homepage"
+          animate={{ x: 0 }}
+          initial={{ x: 2000 }}
+          transition={{delay:1}}
+          >
             <h1 className="Logo">sharebnb</h1>
             <p>share blah blah blah share</p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
