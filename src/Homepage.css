@@ -1,5 +1,5 @@
 .Logo {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka One';
     font-size: 9em;
     color: #0D3B66 !important;
     -webkit-text-stroke-width: 5px;
@@ -39,4 +39,15 @@
     background-position: center;
     background-size: 100%;
     
+}
+
+.HomepageP{
+  background-color: #F4D35E;
+  color: #0D3B66;
+  width: 29%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0%;
+ font-family: 'Fredoka One';
+ font-size: 1.5em;
 }
